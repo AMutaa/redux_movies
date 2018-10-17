@@ -7,11 +7,13 @@ const Toggle = ({ messageVisibility, dispatch }) => (
       <p>You'll be seeing this if redux action is toggled</p>
     }
     <button onClick={() => dispatch({
-      type: 'TOGGLE_MESSAGE',
-    })}
+      type: 'TOGGLE_MESSAGE'
+    }
+
+    )}
     >Toggle Me
     </button>
-  </div>
+  </div >
 );
 
 const mapStateToProps = (state) => ({
