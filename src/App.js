@@ -13,6 +13,7 @@ import rootReducer from './rootReducer';
 import './App.css';
 import MoviesList from './MoviesList';
 import MovieDetail from './MovieDetail';
+import Toggle from './Toggle';
 
 
 const store = createStore(
@@ -33,13 +34,14 @@ const App = () => (
             </div>
           </Link>
         </header>
+        <Toggle />
         <Switch>
           <Route exact path="/" component={MoviesList} />
           <Route path="/:id" component={MovieDetail} />
         </Switch>
       </div>
     </Router>
-  </Provider>
+  </Provider >
 )
 
 export default App;

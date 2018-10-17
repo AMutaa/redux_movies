@@ -1,5 +1,5 @@
 const initialState = {
-  messageVisbility: false,
+  messageVisibility: false,
 }
 
 export default function (state = initialState, action) {
