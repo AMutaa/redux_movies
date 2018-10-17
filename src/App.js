@@ -7,13 +7,14 @@ import {
   Link
 } from 'react-router-dom'
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
+import { createStore } from 'redux';
+import rootReducer from './rootReducer';
 import './App.css';
 import MoviesList from './MoviesList';
 import MovieDetail from './MovieDetail';
 
-const hello = () => ('hello')
-const store = createStore(hello)
+
+const store = createStore(rootReducer)
 
 const App = () => (
   <Provider store={store}>
