@@ -5,7 +5,7 @@ import Movie from './Movie';
 import { getMovies } from './actions'
 
 class MoviesList extends Component {
-  async componentDidMount() {
+  componentDidMount() {
     const { getMovies, isLoaded } = this.props;
     if (!isLoaded) {
       getMovies();
