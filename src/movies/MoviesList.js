@@ -15,7 +15,6 @@ class MoviesList extends Component {
   }
   render() {
     const { movies, isLoaded } = this.props;
-    const oneHour = 60 * 60 * 1000
     if (!isLoaded) return <h1>Loading</h1>
     return (
       <div className="movie_grid">
