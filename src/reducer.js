@@ -2,6 +2,7 @@ const initialState = {
   messageVisibility: false,
 }
 
+
 export default function (state = initialState, action) {
 
   const { type } = action;
@@ -9,12 +10,9 @@ export default function (state = initialState, action) {
     case 'TOOGLE_MESSAGE':
       return {
         ...state,
-        messageVisibility: !state.messageVisibility,
-
+        messageVisibility: state.messageVisibility,
       };
     default:
       return state;
   }
 }
-
-
