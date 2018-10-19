@@ -6,12 +6,15 @@ import { getMovies } from './actions'
 
 class MoviesList extends Component {
   async componentDidMount() {
-    const { getMovies } = this.props;
-    getMovies();
+    const { getMovies, isLoaded } = this.props;
+    if (!isLoaded) {
+      getMovies();
+    }
     // this.props.getMovies();
   }
   render() {
-    const { movies } = this.props;
+    const { movies, isLoaded } = this.props;
+    if (!isLoaded) return <h1>Loading</h1>
     return (
       <div className="movie_grid">
         {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
@@ -22,6 +25,7 @@ class MoviesList extends Component {
 
 const mapStateToProps = (state) => ({
   movies: state.movies.movies,
+  isLoaded: state.movies.moviesLoaded,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
