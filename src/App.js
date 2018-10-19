@@ -13,9 +13,9 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 import './App.css';
-import MoviesList from './MoviesList';
-import MovieDetail from './MovieDetail';
-import Toggle from './Toggle';
+import MoviesList from './movies/MoviesList';
+import MovieDetail from './movies/MovieDetail';
+import Toggle from './toggle/Toggle';
 
 const middleware = [logger, thunk];
 
