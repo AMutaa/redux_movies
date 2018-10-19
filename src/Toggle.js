@@ -6,20 +6,17 @@ const Toggle = ({ messageVisibility, dispatch }) => {
   return (
     <div>
       {messageVisibility && <p>You'll be seeing this if redux action is toggled</p>}
-      <button onClick={() => {
-        console.log('Button Clicked')
-        console.log(messageVisibility)
-        console.log(dispatch)
+      <button onClick={() =>
         dispatch({
           type: 'TOGGLE_MESSAGE'
         })
-      }}>Toggle Me</button>
+      }>Toggle Me</button>
     </div>
   )
 }
 
 const mapStateToProps = (state) => ({
-  messageVisibility: !state.message.messageVisibility,
+  messageVisibility: state.message.messageVisibility,
 });
 
 
