@@ -6,14 +6,16 @@ import { getMovies } from './actions'
 
 class MoviesList extends Component {
   componentDidMount() {
-    const { getMovies, isLoaded } = this.props;
-    if (!isLoaded) {
+    const { getMovies, isLoaded, moviesLoadedAt } = this.props;
+    const oneHour = 60 * 60 * 1000
+    if (!isLoaded || ((new Date()) - new Date(moviesLoadedAt)) > oneHour) {
       getMovies();
     }
     // this.props.getMovies();
   }
   render() {
     const { movies, isLoaded } = this.props;
+    const oneHour = 60 * 60 * 1000
     if (!isLoaded) return <h1>Loading</h1>
     return (
       <div className="movie_grid">
@@ -26,6 +28,7 @@ class MoviesList extends Component {
 const mapStateToProps = (state) => ({
   movies: state.movies.movies,
   isLoaded: state.movies.moviesLoaded,
+  moviesLoadedAt: state.movies.moviesLoadedAt,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
