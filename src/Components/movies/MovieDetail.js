@@ -12,7 +12,7 @@ class MovieDetail extends Component {
         const { getMovie, match } = this.props;
         getMovie(match.params.id);
     }
-    componentWillMount() {
+    componentWillUnmount() {
         this.props.resetMovie();
     }
 
@@ -40,11 +40,10 @@ const mapStateToProps = (state) => ({
     movie: state.movies.movie,
     isLoaded: state.movies.movieLoaded,
 });
+// const mapDispatchToProps = (dispatch) => bindActionCreators(, dispatch);
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+export default connect(mapStateToProps, {
     getMovie,
     resetMovie,
-}, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieDetail);
+})(MovieDetail);
 

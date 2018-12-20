@@ -9,9 +9,9 @@ import { save, load } from 'redux-localstorage-simple';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 import './App.css';
-import MoviesList from './movies/MoviesList';
-import MovieDetail from './movies/MovieDetail';
-import Toggle from './toggle/Toggle';
+import { MoviesList, MovieDetail } from './Components/movies'
+import { Toggle } from './Components/toggle';
+
 
 const middleware = [logger, thunk];
 
