@@ -1,25 +1,33 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
 
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
-import logger from 'redux-logger';
-import thunk from 'redux-thunk';
-import { save, load } from 'redux-localstorage-simple';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './rootReducer';
-import './App.css';
-import { MoviesList, MovieDetail } from './Components/movies'
-import { Toggle } from './Components/toggle';
+import thunk from "redux-thunk";
+import { save, load } from "redux-localstorage-simple";
+import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "./rootReducer";
+import "./App.css";
+import { MoviesList, MovieDetail } from "./Components/movies";
+import { Toggle } from "./Components/toggle";
 
-
+const logger = store => next => action => {
+  let previousState = store.getState();
+  next(action);
+  let nextState = store.getState();
+  console.info(action.type, {
+    action,
+    previousState,
+    nextState
+  });
+};
 const middleware = [logger, thunk];
 
 const store = createStore(
   rootReducer,
   load(),
-  composeWithDevTools(applyMiddleware(...middleware, save())),
-)
+  composeWithDevTools(applyMiddleware(...middleware, save()))
+);
 
 const App = () => (
   <Provider store={store}>
@@ -40,8 +48,7 @@ const App = () => (
         </Switch>
       </div>
     </Router>
-  </Provider >
-)
+  </Provider>
+);
 
 export default App;
-
